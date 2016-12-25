@@ -14,7 +14,7 @@ AWS Console -> Services -> Compute -> Lambda -> Create a Lambda function
 that you can see them in the output -> Handler: Pick one of the handlers e.g.
 com.udoheld.aws.lambda.HelloLogSimple -> Role: Create new role from template(s)
 -> Role name: Pick something e.g. aws-lambda-hello-role -> Memory (MB): 128
--> Timeout 3s -> Next -> Create function -> Test -> Template: Leave the Hello
+-> Timeout: 3s -> Next -> Create function -> Test -> Template: Leave the Hello
 World template or modify it as you with -> Save And Test
 
 ## Loggers
@@ -67,4 +67,5 @@ a String implementation is documented. I didn't get it to work.
 
 
 ## License
-AWS Lambda Java Hello Logs are released under version 3.0 of the [LGPL License][].
+AWS Lambda Java Hello Logs are released under version 3.0 of the
+[LGPL License](https://www.gnu.org/licenses/lgpl-3.0.en.html).
