@@ -50,7 +50,7 @@ input.
 While this logger implements the handler and expects a String you will get an
 JsonMappingException.
 
-### HelloLogStringNotWorking
+### HelloLogStringDocNotWorking
 While this handler is implemented as per documentation it won't work. The AWS
 runtime expects that a handler is implemented and will throw an exception.
 
