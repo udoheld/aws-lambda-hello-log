@@ -20,6 +20,7 @@ package com.udoheld.aws.lambda;
 
 import com.amazonaws.services.lambda.runtime.Client;
 import com.amazonaws.services.lambda.runtime.ClientContext;
+import com.amazonaws.services.lambda.runtime.CognitoIdentity;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
@@ -71,7 +72,7 @@ public class HelloLogFull implements RequestHandler<Map<String,Object>,String> {
         .append(clientContextToString(context.getClientContext())).append("},");
     sb.append("{functionName=").append(context.getFunctionName()).append("},");
     sb.append("{functionVersion=").append(context.getFunctionVersion()).append("},");
-    sb.append("{identity=").append(context.getIdentity()).append("},");
+    sb.append("{identity=").append(identityToString(context.getIdentity())).append("},");
     sb.append("{invokedFunctionArn=").append(context.getInvokedFunctionArn()).append("},");
     sb.append("{logGroupName=").append(context.getLogGroupName()).append("},");
     sb.append("{logStreamName=").append(context.getLogStreamName()).append("},");
@@ -129,6 +130,23 @@ public class HelloLogFull implements RequestHandler<Map<String,Object>,String> {
     sb.append("{custom=").append(clientContext.getCustom()).append("}");
     sb.append("{environment=").append(clientContext.getEnvironment()).append("}");
 
+    return sb.toString();
+  }
+
+  /**
+   * Prints out the identity information.
+   * @param identity CognitoIdentity
+   * @return String containing the cognito data. "null" if empty
+   */
+
+  public static String identityToString(CognitoIdentity identity) {
+    if (identity == null) {
+      return "null";
+    }
+
+    StringBuilder sb = new StringBuilder();
+    sb.append("{identityId=").append(identity.getIdentityId()).append("}");
+    sb.append("{identityPoolId=").append(identity.getIdentityPoolId()).append("]");
     return sb.toString();
   }
 }

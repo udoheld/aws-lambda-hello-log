@@ -19,7 +19,11 @@
 package com.udoheld.aws.lambda;
 
 
-import com.amazonaws.services.lambda.runtime.*;
+import com.amazonaws.services.lambda.runtime.Client;
+import com.amazonaws.services.lambda.runtime.ClientContext;
+import com.amazonaws.services.lambda.runtime.CognitoIdentity;
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.udoheld.aws.lambda.api.CustomRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -139,7 +143,17 @@ public class TestLoggers {
 
       @Override
       public CognitoIdentity getIdentity() {
-        return null;
+        return new CognitoIdentity() {
+          @Override
+          public String getIdentityId() {
+            return null;
+          }
+
+          @Override
+          public String getIdentityPoolId() {
+            return null;
+          }
+        };
       }
 
       @Override
